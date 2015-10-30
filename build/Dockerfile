@@ -1,6 +1,6 @@
 FROM debian:jessie
 
-MAINTAINER Umputun
+MAINTAINER Anton Ivanov <anton.ai81@gmail.com>
 
 #install basic packages
 RUN \
@@ -46,6 +46,6 @@ ADD start.sh /srv/monit/start.sh
 ADD monit.sh /srv/monit/monit.sh
 
 EXPOSE 9009
-VOLUME ["/etc/monit/conf.d",  "/var/log/monit", "/srv/monit", "/hostsrv", "/hostroot",]
+VOLUME ["/etc/monit/conf.d", "/srv/monit", "/hostsrv", "/hostroot"]
 
 CMD ["/srv/monit/start.sh"]
