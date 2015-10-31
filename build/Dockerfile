@@ -8,7 +8,7 @@ RUN \
  apt-get install python-pip python-dev monit curl mysql-client inotify-tools apt-transport-https -y -qq && \
  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
  echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list && \
- apt-get update -qq && apt-get install -qqy docker-engine && \
+ apt-get update -qq && apt-get install -qqy docker-engine=1.7.1-0~jessie && \
  easy_install -U pip && \
  pip install plumbum pymongo awscli pytz beautifulsoup4 && \
  pip install --upgrade httpie && \
@@ -44,6 +44,7 @@ ADD scripts /srv/monit/scripts
 
 ADD start.sh /srv/monit/start.sh
 ADD monit.sh /srv/monit/monit.sh
+ADD setup_ip.sh /srv/monit/setup_ip.sh
 
 EXPOSE 9009
 VOLUME ["/etc/monit/conf.d", "/srv/monit", "/hostsrv", "/hostroot"]
